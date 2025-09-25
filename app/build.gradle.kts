@@ -54,6 +54,14 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.okhttp.logging)
     implementation(libs.gson)
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.coil.compose)
+    implementation(libs.androidx.compose.foundation.layout)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.compose.runtime)
+    implementation(libs.firebase.common.ktx)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

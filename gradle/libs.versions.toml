@@ -11,6 +11,13 @@ composeBom = "2024.09.00"
 retrofit = "2.9.0"
 okhttpLogging = "4.10.0"
 gson = "2.10.1"
+navigationRuntimeKtx = "2.9.4"
+coil = "2.5.0"
+foundationLayout = "1.9.1"
+navigationCompose = "2.9.4"
+foundation = "1.9.1"
+runtime = "1.9.1"
+firebaseCommonKtx = "22.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -32,6 +39,13 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 okhttp-logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttpLogging" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+androidx-compose-foundation-layout = { group = "androidx.compose.foundation", name = "foundation-layout", version.ref = "foundationLayout" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundation" }
+androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "runtime" }
+firebase-common-ktx = { group = "com.google.firebase", name = "firebase-common-ktx", version.ref = "firebaseCommonKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

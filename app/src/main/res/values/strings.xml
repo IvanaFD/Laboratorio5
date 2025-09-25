@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Laboratorio5</string>
+    <string name="app_name" translatable="false">Laboratorio5</string>
+    <string name="pokemon_detail_title" translatable="false">Detalle del Pokémon</string>
+    <string name="normal_label" translatable="false">Normal</string>
+    <string name="shiny_label" translatable="false">Shiny</string>
+    <string name="front_label" translatable="false">Frente</string>
+    <string name="back_label" translatable="false">Atrás</string>
+    <string name="shiny_front_label" translatable="false">Shiny Frente</string>
+    <string name="shiny_back_label" translatable="false">Shiny Atrás</string>
 </resources>

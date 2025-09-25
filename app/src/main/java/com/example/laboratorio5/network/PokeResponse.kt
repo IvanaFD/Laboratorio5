@@ -6,7 +6,10 @@ data class Pokemon(
     val name: String,
     val url: String
 ) {
-   val id: String
+
+
+
+    val id: String
         get() = url.split("/").dropLast(1).last()
 
     val imageUrlFront: String
