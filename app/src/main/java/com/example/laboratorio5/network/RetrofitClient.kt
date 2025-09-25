@@ -9,7 +9,7 @@ object RetrofitClient {
     val instance: Retrofit by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create()) // para convertir JSON a objetos Kotlin
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
 }

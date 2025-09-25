@@ -17,7 +17,10 @@ foundationLayout = "1.9.1"
 navigationCompose = "2.9.4"
 foundation = "1.9.1"
 runtime = "1.9.1"
-firebaseCommonKtx = "22.0.1"
+firebaseCommonKtx = "21.0.0"
+firebaseBom = "33.5.0"
+
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -45,7 +48,11 @@ androidx-compose-foundation-layout = { group = "androidx.compose.foundation", na
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "foundation" }
 androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime", version.ref = "runtime" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-firestore = { module = "com.google.firebase:firebase-firestore" }
 firebase-common-ktx = { group = "com.google.firebase", name = "firebase-common-ktx", version.ref = "firebaseCommonKtx" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

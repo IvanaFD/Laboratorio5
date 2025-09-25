@@ -1,6 +1,6 @@
 package com.example.laboratorio5.network
 
-data class PokeResponse(val results: List<Pokemon>)
+data class PokeResponse(val results: List<Pokemon> = emptyList())
 
 data class Pokemon(
     val name: String,
