@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Laboratorio5</string>
+    <string name="app_name" translatable="false">Pokedex</string>
     <string name="pokemon_detail_title" translatable="false">Detalle del Pokémon</string>
     <string name="normal_label" translatable="false">Normal</string>
     <string name="shiny_label" translatable="false">Shiny</string>
