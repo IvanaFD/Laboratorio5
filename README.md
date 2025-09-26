@@ -30,6 +30,8 @@ De esta forma, la aplicación puede obtener los datos en segundo plano y mostrar
 
 ## Vista de la App
 
-![Lista de pokemones](./drawable/Captura de pantalla 2025-09-26 045725.png)
+![Lista de pokemones](https://github.com/IvanaFD/Laboratorio5/blob/main/vistaLista.png?raw=true)
+
+![Detalles de Pokemones](https://github.com/IvanaFD/Laboratorio5/blob/main/VistaDetalles.png?raw=true)
 
 
