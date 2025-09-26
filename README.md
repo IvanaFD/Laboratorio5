@@ -1,4 +1,4 @@
-# Laboratorio 5 - Pokedex con Retrofit y Jetpack Compose
+# Laboratorio 5 - Pokedex con Retrofit 
 
 ## Descripción
 Este laboratorio consistió en desarrollar una aplicación móvil en Android que consume la API pública de [PokeAPI](https://pokeapi.co/).  
@@ -29,3 +29,7 @@ De esta forma, la aplicación puede obtener los datos en segundo plano y mostrar
 - **PokeDetailScreen**: despliega las imágenes del Pokémon seleccionado en sus diferentes versiones.  
 
 ## Vista de la App
+
+![Lista de pokemones](./drawable/Captura de pantalla 2025-09-26 045725.png)
+
+
