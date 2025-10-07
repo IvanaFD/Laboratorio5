@@ -55,27 +55,20 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.ui.layout.ContentScale
 import com.example.laboratorio5.network.Pokemon
-
 import java.util.Locale
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowBack
 
-
-
-
 private const val TAG = "Pokedex-App"
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContent {
             Laboratorio5Theme {
                 PokeApp()
             }
         }
-
-
     }
 }
 /*
@@ -196,8 +189,8 @@ fun PokeDetailScreen(pokemon: Pokemon, navController: NavHostController) {
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
-                            imageVector = Icons.Default.ArrowBack,
-                            contentDescription = "Regresar"
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = null
                         )
                     }
                 },
@@ -205,12 +198,12 @@ fun PokeDetailScreen(pokemon: Pokemon, navController: NavHostController) {
                     Text(
                         text = pokemon.name.replaceFirstChar { it.uppercase() },
                         style = MaterialTheme.typography.titleLarge,
-                        modifier = Modifier.fillMaxWidth(),
-                        textAlign = TextAlign.Center
+                        modifier = Modifier.fillMaxWidth()
+
                     )
                 },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = Color(0xFFE5FFF9)
+                    containerColor = Color(0xFFCCE7FF)
                 )
             )
         }
@@ -222,14 +215,7 @@ fun PokeDetailScreen(pokemon: Pokemon, navController: NavHostController) {
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                text = stringResource(R.string.normal_label),
-                style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(Color(0xFFCCE7FF)),
-                textAlign = TextAlign.Center
-            )
+
             Row(
                 modifier = Modifier.fillMaxWidth().background(Color(0xFFE5FFFA)),
                 horizontalArrangement = Arrangement.SpaceEvenly,
@@ -263,14 +249,7 @@ fun PokeDetailScreen(pokemon: Pokemon, navController: NavHostController) {
                     )
                 }
             }
-            Text(
-                text = stringResource(R.string.shiny_label),
-                style = MaterialTheme.typography.titleLarge,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(Color(0xFFCCE7FF)),
-                textAlign = TextAlign.Center
-            )
+
             Row(
                 modifier = Modifier.fillMaxWidth().background(Color(0xFFE5FFFA)),
                 horizontalArrangement = Arrangement.SpaceEvenly,
