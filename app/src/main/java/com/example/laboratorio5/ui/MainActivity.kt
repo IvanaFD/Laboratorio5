@@ -1,4 +1,4 @@
-package com.example.laboratorio5
+package com.example.laboratorio5.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -40,8 +40,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
-import com.example.laboratorio5.network.PokeApiService
-import com.example.laboratorio5.network.RetrofitClient
+import com.example.laboratorio5.data.network.PokeApiService
+import com.example.laboratorio5.data.network.RetrofitClient
 import com.example.laboratorio5.ui.theme.Laboratorio5Theme
 import kotlinx.coroutines.launch
 import androidx.compose.foundation.clickable
@@ -54,11 +54,15 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.ui.layout.ContentScale
-import com.example.laboratorio5.network.Pokemon
+import com.example.laboratorio5.data.network.Pokemon
 import java.util.Locale
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.laboratorio5.R
 
 private const val TAG = "Pokedex-App"
 class MainActivity : ComponentActivity() {
@@ -94,47 +98,51 @@ fun PokeApp() {
 * Pantalla con el listado de pokemones
 * */
 @Composable
-fun PokeListScreen(navController: NavHostController) {
-
-    val pokemonList = remember { mutableStateOf<List<Pokemon>>(emptyList()) }
-    val coroutineScope = rememberCoroutineScope()
-
+fun PokeListScreen(navController: NavHostController,  mainViewModel: MainViewModel = viewModel()) {
+    val uiState = mainViewModel.uiState.collectAsState().value
     LaunchedEffect(Unit) {
-        coroutineScope.launch {
-            try {
-                val pokeApiService = RetrofitClient.instance.create(PokeApiService::class.java)
-                val response = pokeApiService.getPokemonList()
-                pokemonList.value = response.results
-            } catch (e: Exception) {
+        mainViewModel.getPokemonList()
 
-                e.printStackTrace()
-            }
-        }
     }
     Surface (
         modifier = Modifier.fillMaxSize()
     ){
         Column(
             modifier = Modifier.fillMaxWidth().background(Color(0xFFCCE7FF)),
-
-
         ){
             Image(painterResource(R.drawable.logopokedex),
                 contentDescription = "Logo de la Pokemon",
                 modifier = Modifier.requiredSize(200.dp).align(CenterHorizontally)
             )
-            LazyColumn(
-                modifier = Modifier.fillMaxWidth().background(Color(0xFFFAFFFE)),
-                contentPadding = PaddingValues(vertical = 8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                items(pokemonList.value) { pokemon ->
-                    PokeCard(pokemon, navController)
+            when (uiState) {
+                is StateInterface.Loading -> {
+                    Text(stringResource(R.string.loading), modifier = Modifier.align(CenterHorizontally))
                 }
-            }
-        }
+                is StateInterface.Success -> {
+                    LazyColumn(
+                        modifier = Modifier.fillMaxWidth().background(Color(0xFFFAFFFE)),
+                        contentPadding = PaddingValues(vertical = 8.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        items(uiState.data) { pokemon ->
+                            PokeCard(pokemon, navController)
+                        }
+                    }
+                }
+                is StateInterface.Error -> {
+                    Column(Modifier.align(CenterHorizontally), horizontalAlignment = CenterHorizontally) {
+                        Text(stringResource(R.string.error_occurred, uiState.message))
+                        Spacer(modifier = Modifier.height(8.dp))
+                        androidx.compose.material3.Button(onClick = { mainViewModel.getPokemonList() },colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFC6C4FF)) ) {
+                            Text(stringResource(R.string.retry))
+                        }
+                    }
+                }
+        }   }
     }
 }
+
+
 /*
 * Card de cada pokemon que aparece en la lisat de pokemones en la primera pantalla asi es clicleable para entrar a ver sus detalles
 * */
@@ -213,7 +221,7 @@ fun PokeDetailScreen(pokemon: Pokemon, navController: NavHostController) {
                 .fillMaxSize()
                 .padding(innerPadding)
                 .padding(16.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = CenterHorizontally
         ) {
 
             Row(
@@ -221,7 +229,7 @@ fun PokeDetailScreen(pokemon: Pokemon, navController: NavHostController) {
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.Top
             ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Column(horizontalAlignment = CenterHorizontally) {
                     Text(
                         text = stringResource(R.string.front_label),
                         style = MaterialTheme.typography.bodyLarge,
@@ -234,7 +242,7 @@ fun PokeDetailScreen(pokemon: Pokemon, navController: NavHostController) {
                         modifier = Modifier.size(200.dp)
                     )
                 }
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Column(horizontalAlignment = CenterHorizontally) {
 
                     Text(
                         text = stringResource(R.string.back_label),
@@ -255,7 +263,7 @@ fun PokeDetailScreen(pokemon: Pokemon, navController: NavHostController) {
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.Top
             ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Column(horizontalAlignment = CenterHorizontally) {
 
                     Text(
                         text = stringResource(R.string.shiny_front_label),
@@ -269,7 +277,7 @@ fun PokeDetailScreen(pokemon: Pokemon, navController: NavHostController) {
                         modifier = Modifier.size(200.dp)
                     )
                 }
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Column(horizontalAlignment = CenterHorizontally) {
                     Text(
                         text = stringResource(R.string.shiny_back_label),
                         style = MaterialTheme.typography.bodyLarge,

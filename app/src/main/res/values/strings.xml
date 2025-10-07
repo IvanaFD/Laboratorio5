@@ -7,4 +7,7 @@
     <string name="back_label" translatable="false">Atrás</string>
     <string name="shiny_front_label" translatable="false">Shiny Frente</string>
     <string name="shiny_back_label" translatable="false">Shiny Atrás</string>
+    <string name="loading">Cargando...</string>
+    <string name="error_occurred">Ocurrió un error: %1$s</string>
+    <string name="retry">Reintentar</string>
 </resources>
