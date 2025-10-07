@@ -34,4 +34,16 @@ De esta forma, la aplicación puede obtener los datos en segundo plano y mostrar
 
 ![Detalles de Pokemones](https://github.com/IvanaFD/Laboratorio5/blob/main/VistaDetalles.png?raw=true)
 
+# Laboratorio 6 - Refactorización con MVVM y Clean Architecture
+En este laboratorio se reorganizó el proyecto para seguir el patrón **MVVM** y una arquitectura limpia simplificada.  
+Se agregó un **ViewModel** que maneja el estado de la UI y la lógica de presentación usando StateFlow, y un **Repository** que actúa como intermediario entre la capa de datos (Retrofit) y el ViewModel.  
+La app ahora maneja estados como *cargando* y *error* de forma reactiva, mostrando una imagen de carga cuando se están obteniendo los datos y un mensaje de error (con opción de reintentar) si la llamada falla, por ejemplo al desconectar el wifi.
+
+
+**Pantalla de carga:**  
+![Ejemplo cargando](https://github.com/IvanaFD/Laboratorio5/blob/main/VistaCargando.png?raw=true)
+
+**Pantalla de error:**  
+![Ejemplo error](https://github.com/IvanaFD/Laboratorio5/blob/main/VistaReintentar.png?raw=true)
+
 

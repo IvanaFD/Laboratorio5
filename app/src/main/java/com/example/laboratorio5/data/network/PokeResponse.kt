@@ -1,4 +1,4 @@
-package com.example.laboratorio5.network
+package com.example.laboratorio5.data.network
 
 data class PokeResponse(val results: List<Pokemon> = emptyList())
 

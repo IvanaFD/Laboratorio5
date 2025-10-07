@@ -1,4 +1,4 @@
-package com.example.laboratorio5.network
+package com.example.laboratorio5.data.network
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
